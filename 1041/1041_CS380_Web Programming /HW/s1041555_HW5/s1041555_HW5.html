@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+		<script>
+   　　		var id = window.prompt("Please Enter your ID");
+   　　		var chatroom = window.prompt("Please Enter the Name of Chat Room");
+			function ShowAnswer(){
+				document.getElementById("ID_Box").innerHTML = id;
+				document.getElementById("Chat_Box").innerHTML = chatroom;
+			}
+			function submitChat(){
+				var img = form1.img.value;
+				if(form1.msg.value == ''){
+					alert('Mandatory');
+					return;
+				}
+				var xmlhttp = new XMLHttpRequest();
+				var msg = form1.msg.value;
+				var img = form1.img.value;
+				xmlhttp.onreadystatechange = function(){
+					if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+						document.getElementById('chatlogs').innerHTML = xmlhttp.responseText;
+					}
+				}
+				xmlhttp.open('GET','s1041555_HW5_todb.php?username='+id+'&msg='+msg+'&chatroom='+chatroom+'&img='+img,true);
+				xmlhttp.send();
+			}
+			$(document).ready(function(e){
+			$.ajaxSetup({cache:false});
+			setInterval(function(){$('#chatlogs').load('s1041555_HW5_fromdb.php?chatroom='+chatroom+'&username=' + id);}, 2000);
+			});
+   　　</script>
+</head>
+<body onload='ShowAnswer();'>
+<form name = "form1">
+Your ID:<span id="ID_Box"></span>
+ Chat Room:<span id="Chat_Box"></span>
+<div id = "chatlogs" style="width:800px;">
+Loading...
+</div>
+<textarea name = "msg"></textarea><br />
+<input type = "button" value = "Send" onclick = "submitChat()" >
+<input type="radio" name="img" value="1">
+<img src="1.gif"  alt="1" />
+<input type="radio" name="img" value="2">
+<img src="2.gif"  alt="2" />
+<input type="radio" name="img" value="3">
+<img src="3.gif"  alt="3" />
+<input type="radio" name="img" value="4">
+<img src="4.gif"  alt="4" />
+<input type="radio" name="img" value="5">
+<img src="5.gif"  alt="5" />
+<input type="radio" name="img" value="0">
+<img src="0.gif"  alt="0" />
+</form>
+</body>
+</html>

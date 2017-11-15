@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset = "utf-8">
+    <title>1</title>
+      <style type = "text/css">
+		body
+		{
+			font-size:16pt;
+		}	  
+        table, th, td
+        {
+		border: 1px solid black;
+		border-collapse: collapse;
+        }
+		table{
+		        background: -webkit-gradient(
+            linear, left top, right bottom,
+            color-stop(15%, white),
+            color-stop(75%, yellow) );
+         background: -moz-linear-gradient(
+            top left, white 15%, yellow 75% );
+         background: linear-gradient(
+            135deg, white 15%, yellow 75% );
+
+		}
+		</style>
+  </head>
+  <body>
+  <h1 style = "text-align:center">Register Form</h1>
+	<form method = "post" action = "#">		
+		<table  align="center" width = "600">
+		<tr>
+		<td>Name:</td>
+		<td><input type = "text"/></td>
+		<td>Student ID:</td>
+		<td><input type = "text" placeholder = "s#######" pattern = "s\d{7}" required /></td>
+		</tr>
+		<tr>
+		<td>Cell phone:</td>
+		<td><input type = "tel" placeholder = "09##-###-###" pattern = "09\d{2}-\d{3}-\d{3}" required /></td>
+		<td>License Plate:</td>
+		<td><input type = "text" placeholder = "##-####|###-####|###-##" pattern = "\d{4}-\d{3}-\d{3}" required /></td>
+		</tr>
+		<tr>
+		<td>Email:</td>
+		<td colspan = "3"><input type = "email"  required /></td>
+		</tr>
+		<tr style = "text-align:center">
+		<td colspan = "2"><input type = "submit" value = "Submit"></td>
+		<td colspan = "2"><input type = "reset" value = "Clear"></td>
+		</tr>
+		</table>
+	</form>
+  </body>
+</html>

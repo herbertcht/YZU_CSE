@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset = "utf-8">
+    <title>Debug</title>
+      <style type = "text/css">
+		body
+		{
+			font-size:16pt;
+		}  
+		#logo
+		{
+			background-color: orange;
+		}
+        table, th, td
+        {
+		border: 1px solid black;
+		border-collapse: collapse;
+        }
+		#menu
+		{
+			text-align:center;
+		}
+		</style>
+  </head>
+  <body>
+	<form method = "post" action = "midterm_debug.php">	
+		<table>		
+			<tr rowspan= "2">
+				<td id="logo"><img src="logo.png" alt = "logo"></td>
+				<td colspan="3">
+					<span>外送注意事項</span>
+					<ul>
+						<li>每一筆食品訂購，須支付台幣NT$35元之外送服務費用。 </li>
+						<li>外送服務只限台灣特定區域。詳情請致電歡樂送®專線(02)40-666-888查詢。 </li>
+						<li>如遇惡劣天氣、交通及/或其他不可控制的情況，外送服務將可能遲延。在因颱風或其他狀況，停止上班上課時，外送服務將暫停。 </li>
+						<li>只接受於交貨時以新台幣現金付款，恕不接受任何其他付款方式，麥當勞餐券視同現金。 </li>
+					</ul>
+				</td>
+			</tr>
+			<tr></tr>
+			<tr style = "text-align:center">
+				<td class="menu"><img src="menu1.png" alt = "menu" /><br><input name = "order" type = "checkbox" value="No 1" ></td>
+				<td class="menu"><img src="menu2.png" alt = "menu" /><br><input name = "order" type = "checkbox" value="No 2"></td>
+				<td class="menu"><img src="menu3.png" alt = "menu" /><br><input name = "order" type = "checkbox" value="No 3"></td>
+				<td class="menu"><img src="menu4.png" alt = "menu" /><br><input name = "order" type = "checkbox" value="No 4"></td>
+			</tr>
+			<tr style = "text-align:left">
+				<td>*訂購人:</td>
+				<td><input name = "name" type = "text" required> </td>
+				<td>*電話:</td>
+				<td><input type = "text" placeholder="0987654321" pattern="\d{10}" required></td>
+			</tr>
+			<tr>
+				<td>*Email:</td>
+				<td colspan="3"><input id = "email" type = "text"> </td>
+			</tr>   
+			<tr>
+				<td>*地址:</td>
+				<td colspan="3"><input type = "text" required> </td>
+			</tr>
+			<tr>
+				<td colspan="4" style="text-align:center">	
+					<input type = "submit" value = "Submit">
+					<input type = "reset" value = "Clear">
+				</td>
+			</tr>
+		</table>
+	</form>
+  </body>
+</html>
