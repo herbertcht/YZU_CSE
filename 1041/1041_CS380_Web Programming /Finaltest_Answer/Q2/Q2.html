@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset = "utf-8">
+    <title>Q2</title>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+    google.load('visualization', '1.1', {packages: ['line']});
+    function progress (){
+	var from = $("#from").val();
+	var to = $("#to").val();
+	var aq = $("#aq").val();
+	var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Date');
+	data.addColumn('number', aq);
+	var options = {
+	    chart: {
+		title: "2014年中壢地區 "+aq+ " 折線圖",
+	    },
+	    width: 1500,
+	    height: 500,
+	};
+	var chart = new google.charts.Line(document.getElementById('out'));
+	$.ajax({
+		url: "Q2.php",
+		type: "POST",
+		data :{
+		    from:from,
+		    to:to,
+		    aq:aq
+		},
+		datatype: "html",
+	        success: function( output ) {
+		    var line = output.split("\n");
+		    var line_num = line.length;
+		    for (var i = 0; i<line_num; i++)
+		    {
+			var seq = line[i].split(",");
+			var time = seq[0];
+			var value1 = parseInt(seq[1]);
+			data.addRows([[time,value1]]);
+		    }
+		    chart.draw(data, options);
+	        },
+		error : function(){
+		    alert( "Request failed." );
+		}
+
+	});
+      }
+  </script>
+</head>
+<body>
+    <form method = "post" action = "#">
+         <p>開始日期: <input type="date" id="from">結束日期:<input type="date" id="to"> </p>
+	 <p>請選澤空汙指標:
+            <select id = "aq">
+               <option selected>PM10</option>
+               <option>PM2.5</option>
+       </select></p>
+
+         <p><input id = "submit" type="button" value = "Send Query" onclick="progress()"></p>
+      </form>
+
+    <div id="out"></div>
+</body>
+</html>

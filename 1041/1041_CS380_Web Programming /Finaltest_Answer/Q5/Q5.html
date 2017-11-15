@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset = "utf-8">
+<title>Q5</title>
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+    function checkID()
+    {
+	var id = $("#id").val();
+	$.ajax({
+		url: "Q5_1.php",
+		type: "POST",
+		data :{
+		    id:id
+		},
+		datatype: "html",
+	        success: function( output ) {
+		    if(output==0)
+		    {
+			$( "#help" ).html("該ID可以申請");
+
+		    }
+		    else
+		    {
+			$( "#help" ).html("該ID已被使用, 請換其他ID申請");
+		    }
+	        },
+		error : function(){
+		    alert( "Request failed." );
+		}
+
+	});
+
+    }
+    function checkpw()
+    {
+	var p1 = $("#p1").val();
+	var p2 = $("#p2").val();
+	if (p1 !=p2)
+	{
+	    $( "#help" ).html("密碼不一致請確認");
+	}
+    }
+</script>
+</head>
+<body>
+<form method = "post" action = "Q5_2.php">
+    <p>
+    <h1>帳號申請:</h1>
+    <p><label>ID*:<input id = "id" name="id" type = "text" onblur="checkID()" required> </label></p>
+    <p><label>密碼*:<input id = "p1" name="p1" type = "password" required></label></p>
+    <p><label>確認密碼*:<input id = "p2" name ="p2" type = "password" onblur="checkpw()" required></label></p>
+    <p>
+    <input type = "submit" value = "Submit">
+    <input type = "reset" value = "Clear">
+    </p>
+    <p id="help"></p>
+</form></body></html>
+

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+   <head> 
+      <meta charset = "utf-8">
+      <title>Q1</title>
+      <script>
+         var input = window.prompt( "Input" ,1);
+ 		 var seq = input;
+		 for (var i = 1;i<=9;i++)
+		 {
+			var num=[0,0,0,0,0,0,0,0,0,0];
+			var out="";
+			for (var j = 0;j<seq.length;j++)
+			{
+				var s = parseInt(seq.substr(j,1));
+				num[s]++;
+			}
+			for (var j = 9 ; j>=0;j--)
+			{
+				if(num[j]>0)
+				{
+					out=out+num[j]+j;
+				}
+			}
+			seq=out;
+		 }
+			document.writeln( "<p> " + out + "</p>" );
+      </script>
+   </head>
+   <body></body>
+</html>

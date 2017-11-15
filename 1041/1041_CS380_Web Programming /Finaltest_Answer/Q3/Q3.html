@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Q3</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-Ga4r5dJoKeFmQknzq1JcS5dbg7XlbM8"></script>
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>	
+    <script>
+    $(function(){
+	    $.ajax({
+		url: "Q3_1.php",
+		type: "POST",
+		datatype: "html",
+	        success: function( output ) {
+		   $( "#sel" ).html(output);
+	        },
+		error : function(){
+		    alert( "Request failed." );
+		}
+	    });
+    });
+    function progress()
+    {
+	var time = $("#time").val();
+	var map = new google.maps.Map(document.getElementById('map'), {
+	    center: {lat: 25.0598673, lng:121.5354599 },
+	    zoom: 14
+	});
+	
+    $.getJSON( "Q3_2.php", function( out ) {
+        var results = out.result["results"];
+        $.each(results,function(i,item){
+          var lat = item["lat"];
+	var lng = item["lon"];
+          var des = item["value"];
+          var name = item["locationName"];
+	  var value = des.split("。");
+	    var st = item["startTime"];
+	    st = st.substr(0,10) + " "+ st.substr(11,5);
+	    if ( st == time)
+	    {
+		var myCenter=new google.maps.LatLng(lat,lng);
+		var marker=new google.maps.Marker({
+		    position:myCenter,
+		    icon : value[0]+".png"
+		});
+		marker.setMap(map);
+		var infowindow = new google.maps.InfoWindow({
+		    content:name+":"+value[0]+","+value[1]+","+value[2]
+		});
+		google.maps.event.addListener(marker, 'click', function() {
+		    infowindow.open(map,marker);
+		});
+	    }
+        });
+    });
+    }
+    </script>
+ <style>
+      html, body {
+        height: 100%;
+        margin: 20;
+        padding: 20;
+      }
+      #map {
+        height: 80%;
+      }
+    </style>
+
+<body>
+    <form method = "post" action = "#">
+	<p>台北市未來一周天氣</p>
+	<div id ="sel"></div>
+         <p><input id = "submit" type="button" value = "Send Query" onclick="progress()"></p>
+      </form>
+
+    <div id="map"></div>
+</body>

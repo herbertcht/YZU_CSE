@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset = "utf-8">
+<title>Transition</title>
+<style type = "text/css">
+#box {
+    position:absolute;
+	top : 10px;
+	left : 10px;
+    width:800px;
+    height:800px;
+    margin:0 auto 10px;
+    border:1px solid black;
+   
+}
+#box1 {
+    font-size:12px;
+    position:absolute;
+	top : 20px;
+	left : 20px;
+    width:100px;
+    height:100px;
+	-webkit-transition: all 4s ease;
+    -moz-transition: all 4s ease;
+    -o-transition: all 4s ease;
+    transition: all 4s ease;    
+    border:1px solid red;
+	background: -webkit-radial-gradient(center, white, red);
+
+}
+#box2 {
+    font-size:12px;
+    position:absolute;
+	top : 20px;
+	left : 680px;
+    width:100px;
+    height:100px;
+	-webkit-transition: all 4s ease;
+    -moz-transition: all 4s ease;
+    -o-transition: all 4s ease;
+    transition: all 4s ease;    
+    border:1px solid yellow;
+	background: -webkit-radial-gradient(center, white, yellow);
+
+}
+#box3 {
+    font-size:12px;
+    position:absolute;
+	top : 680px;
+	left : 20px;
+	width:100px;
+    height:100px;
+	-webkit-transition: all 4s ease;
+    -moz-transition: all 4s ease;
+    -o-transition: all 4s ease;
+    transition: all 4s ease;    
+    border:1px solid blue;
+	background: -webkit-radial-gradient(center, white, blue);
+}
+#box4 {
+    font-size:12px;
+    position:absolute;
+	top : 680px;
+	left : 680px;
+    width:100px;
+    height:100px;
+	-webkit-transition: all 4s ease;
+    -moz-transition: all 4s ease;
+    -o-transition: all 4s ease;
+    transition: all 4s ease;    
+    border:1px solid green;
+	background: -webkit-radial-gradient(center, white, green);
+}
+p {
+    text-align:center;
+    padding-top:4px;
+}
+
+#box:hover #box1 {
+    -webkit-border-radius:50px;
+    -moz-border-radius:50px;
+    border-radius:50px;
+    -webkit-transform: rotate(720deg);
+    -moz-transform: rotate(720deg);
+    -o-transform: rotate(720deg);
+    -ms-transform: rotate(720deg);
+    transform: rotate(720deg);    
+    top:310px;
+	left:310px;
+    background-color:#fff;
+}
+#box:hover #box2 {
+    -webkit-border-radius:50px;
+    -moz-border-radius:50px;
+    border-radius:50px;
+    -webkit-transform: rotate(720deg);
+    -moz-transform: rotate(720deg);
+    -o-transform: rotate(720deg);
+    -ms-transform: rotate(720deg);
+    transform: rotate(720deg);    
+    top:310px;
+	left:410px;
+    background-color:#fff;
+}
+#box:hover #box3 {
+    -webkit-border-radius:50px;
+    -moz-border-radius:50px;
+    border-radius:50px;
+    -webkit-transform: rotate(720deg);
+    -moz-transform: rotate(720deg);
+    -o-transform: rotate(720deg);
+    -ms-transform: rotate(720deg);
+    transform: rotate(720deg);    
+    top:410px;
+	left:310px;
+    background-color:#fff;
+}
+#box:hover #box4 {
+    -webkit-border-radius:50px;
+    -moz-border-radius:50px;
+    border-radius:50px;
+    -webkit-transform: rotate(720deg);
+    -moz-transform: rotate(720deg);
+    -o-transform: rotate(720deg);
+    -ms-transform: rotate(720deg);
+    transform: rotate(720deg);    
+    top:410px;
+	left:410px;
+    background-color:#fff;
+}
+</style>
+</head>
+<body>
+<div id="box">
+    <div id="box1"><p>BOX1</p></div>
+	<div id="box2"><p>BOX2</p></div>
+	<div id="box3"><p>BOX3</p></div>
+	<div id="box4"><p>BOX4</p></div>
+</div>
+</body>
+</html>

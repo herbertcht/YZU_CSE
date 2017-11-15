@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset = "utf-8">
+    <title>div image</title>
+      <style type = "text/css">
+		div
+		{
+		    width: 200px;
+            height: 200px;
+			float:left;
+			border:1px solid yellow;
+			align:center;
+			padding-top: 20px;
+			padding-left: 50px;
+		}
+		p
+		{
+			display: none;
+		}
+		div#d1:hover
+		{
+			border:1px solid blue;
+		}
+		div#d2:hover
+		{
+			border:1px solid blue;
+		}
+		div#d3:hover
+		{
+			border:1px solid blue;
+		}
+		div#d4:hover
+		{
+			border:1px solid blue;
+		}		
+		div#d1:hover #p1
+		{
+			display: block;
+		}
+		div#d2:hover #p2
+		{
+			display: block;
+		}
+		div#d3:hover #p3
+		{
+			display: block;
+		}
+		div#d4:hover #p4
+		{
+			display: block;
+		}		
+	  </style>
+  </head>
+  <body>
+	 <div class="r1" id="d1">
+		<img src = "GPP.png" alt = "Good programming practice icon">
+		<p id="p1">FileName:GPP.png</p>
+	 </div>
+	 <div class="r1" id="d2">
+		<img src = "EPT.png" alt = "Error prevention tip icon">
+		<p id="p2">FileName:EPT.png</p>
+	 </div>
+	 <div class="r2" id="d3">
+		<img src = "CPE.png" alt = "Common programming error icon">
+		<p id="p3">FileName:CPE.png</p>
+	 </div>
+	 <div class="r2" id="d4">
+		<img src = "SEO.png" alt = "Software engineering observation icon">
+		<p id="p4">FileName:SEO.png</p>
+	 </div>	 
+  </body>
+</html>

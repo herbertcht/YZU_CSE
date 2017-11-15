@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset = "utf-8">
+    <title>Debug</title>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <style>
+    div {
+	float:left;
+    }
+
+    </style>
+    <script type="text/javascript">
+    google.load("visualization", "1", {packages:["corechart"]});
+    function progress (){
+	var year = $("#year").val();
+	var data1 = new google.visualization.DataTable();
+        data1.addColumn('string', 'Name');
+	data1.addColumn('number', '人數');
+	var data2 = new google.visualization.DataTable();
+        data2.addColumn('string', 'Name');
+	data2.addColumn('number', '人數');
+
+	var options1 = {
+		title: year + " 菜市場名(男)",
+	    is3D: true,
+	    width: 600,
+	    height: 600,
+	};
+	var options2 = {
+		title: year + " 菜市場名(女)",
+	    is3D: true,
+	    width: 600,
+	    height: 600,
+	};
+	var chart1 = new google.visualization.PieChart(document.getElementById('male'));
+	var chart2 = new google.visualization.PieChart(document.getElementById('female'));
+	$.ajax({
+		url: "debug.php",
+		type: "POST",
+		datatype: "html",
+	        success: function( output ) {
+		    var line = output.split("\n");
+		    var line_num = line.length;
+		    for (var i = 0; i<line_num; i++)
+		    {
+			var seq = line[i].split(",");
+			var sex = seq[0];
+			var y = seq[1];
+			var name = seq[2];
+			var num = parseInt(seq[3]);
+			if (y ==year)
+			{
+			    if (sex =="M")
+			    {
+				data1.addRows([[name,num]]);
+			    }
+			    else
+			    {
+				data2.addRows([[name,num]]);
+			    }
+			}
+		    }
+		    chart1.draw(data1, options1);
+		    chart2.draw(data2, options2);
+	        },
+		error : function(){
+		    alert( "Request failed." );
+		}
+
+	});
+      }
+  </script>
+</head>
+<body>
+    <form method = "post" action = "#">
+	 <p>請選澤年份:
+            <select id = "year">
+               <option selected>2010</option>
+               <option>2011</option>
+	       <option>2012</option>
+       </select></p>
+
+         <p><input id = "submit" type="button" value = "Send Query" onclick="progress()"></p>
+      </form>
+
+    <div id="male"></div><div id="female"></div>
+
+</body>
+</html>
